@@ -107,7 +107,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
   },
   {
     id: "t5",
-    name: "Karan Johar (Delhi Client)",
+    name: "Vikram Chawla",
     rating: 5,
     text: "Amazing staff, premium products, and impeccable hygiene. It is extremely hard to find this level of boutique elegance in North Delhi. They treat styling like an editorial art.",
     tag: "Premium Quality",

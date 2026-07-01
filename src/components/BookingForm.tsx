@@ -8,6 +8,13 @@ interface BookingFormProps {
   preselectedService: string;
 }
 
+const SALON_WHATSAPP_NUMBER = "919899000879";
+
+function buildWhatsAppLink(booking: BookingResult) {
+  const message = `New Booking Request\n\nName: ${booking.name}\nPhone: ${booking.phone}\nService: ${booking.service}\nDate: ${booking.date}\nTime: ${booking.time}\nBooking ID: ${booking.id}`;
+  return `https://wa.me/${SALON_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
 export default function BookingForm({ preselectedService }: BookingFormProps) {
   const [formData, setFormData] = useState<FormType>({
     name: "",
@@ -61,6 +68,7 @@ export default function BookingForm({ preselectedService }: BookingFormProps) {
       }
 
       setSuccessResult(data.booking);
+      window.open(buildWhatsAppLink(data.booking), "_blank");
       // Reset form
       setFormData({
         name: "",
@@ -301,9 +309,19 @@ export default function BookingForm({ preselectedService }: BookingFormProps) {
                       </div>
                     </div>
 
-                    <p className="font-sans text-[11px] text-charcoal/60 leading-relaxed max-w-sm mx-auto mb-8">
-                      We have synchronized your request with our master stylists. You will receive an immediate confirmation SMS or WhatsApp on <span className="font-medium text-charcoal">{successResult.phone}</span> shortly.
+                    <p className="font-sans text-[11px] text-charcoal/60 leading-relaxed max-w-sm mx-auto mb-6">
+                      Tap below to confirm your slot with us on WhatsApp — our team will respond right away.
                     </p>
+
+                    
+                    <a
+                      href={buildWhatsAppLink(successResult)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 bg-emerald hover:bg-gold text-ivory hover:text-charcoal py-3.5 px-6 font-sans text-xs uppercase tracking-widest font-semibold transition-all duration-300 mb-6"
+                    >
+                      Confirm via WhatsApp
+                    </a>
 
                     <button
                       onClick={() => setSuccessResult(null)}
