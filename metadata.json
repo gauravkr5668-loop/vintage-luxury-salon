@@ -1,0 +1,6 @@
+{
+  "name": "Vintage Luxury Salon",
+  "description": "Premium luxury unisex salon website with AI beauty consultation and trend matching. Located in Pitampura, Delhi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
